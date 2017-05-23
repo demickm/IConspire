@@ -28,9 +28,10 @@ class ExistingProjectViewController: UIViewController, UITableViewDataSource, UI
     override func viewWillAppear(_ animated: Bool) {
         guard let project = project else {return}
         SupportController.shared.fetchSupport(project: project) { (_) in
-        sleep(2)
+            DispatchQueue.main.async {
+                self.projectSupport.reloadData()
+            }
         }
-        self.projectSupport.reloadData()
     }
     
     

@@ -19,10 +19,12 @@ class NewProjectViewController: UIViewController {
         guard let projectTitle = projectTitle.text,
             let projectTheory = projectTheory.text else {return}
         ProjectController.shared.saveProject(projectTitle: projectTitle, projectTheory: projectTheory) { (_) in
-  
+            
+            DispatchQueue.main.async {
+                let _ = self.navigationController?.popViewController(animated: true)
         }
-        sleep(2)
-        let _ = self.navigationController?.popViewController(animated: true)
+        
+        }
     }
 
 }

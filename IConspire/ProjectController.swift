@@ -19,8 +19,9 @@ class ProjectController {
         cloudKitManager.fetchUserProjects { (projects) in
             guard let projects = projects else {return}
             self.usersProjects = projects
+            completion(projects)
         }
-        completion(usersProjects)
+        
     }
     
     func saveProject(projectTitle: String, projectTheory: String, completion: @escaping(Project?) -> Void) {

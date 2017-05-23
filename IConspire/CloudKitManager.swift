@@ -277,7 +277,7 @@ class CloudKitManager {
                 
                 guard let records = records else { return }
                 let users = records.flatMap { User(record: $0) }
-                let user = users[0]
+                let user = users.first
                 completion(user)
             })
         }

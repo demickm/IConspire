@@ -59,11 +59,11 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidAppear(_ animated: Bool) {
         ProjectController.shared.fetchProjects { (_) in
-            sleep(2)
-            print("fetched")
+            DispatchQueue.main.async {
+                self.myProjects.reloadData()
+                print("fetched")
+            }
         }
-        self.myProjects.reloadData()
-           
     }
     
     // MARK: - Table view data source

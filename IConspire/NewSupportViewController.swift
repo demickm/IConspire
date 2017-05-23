@@ -30,9 +30,9 @@ class NewSupportViewController: UIViewController {
         
         SupportController.shared.saveSupport(supportTitle: title, supportSubTitle: subtitle, supportSource: source, supportAuthor: author, supportDate: Date(), supportBody: body, project: project) {  (_) in
         
+           
             }
-        sleep(2)
-        let _ = self.navigationController?.popViewController(animated: true)
+            let _ = self.navigationController?.popViewController(animated: true)
         }
 
     override func viewDidLoad() {

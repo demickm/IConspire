@@ -20,6 +20,7 @@ class SupportController {
         cloudKitManager.fetchProjectSupport(project: project) { (support) in
             guard let support = support else {return}
             self.support = support
+            completion(support)
         }
     }
     
