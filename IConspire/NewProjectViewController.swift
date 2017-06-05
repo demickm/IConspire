@@ -18,13 +18,14 @@ class NewProjectViewController: UIViewController {
        saveButtonTapped.isEnabled = false
         guard let projectTitle = projectTitle.text,
             let projectTheory = projectTheory.text else {return}
-        ProjectController.shared.saveProject(projectTitle: projectTitle, projectTheory: projectTheory) { (_) in
-            
-            DispatchQueue.main.async {
-                let _ = self.navigationController?.popViewController(animated: true)
-        }
+     ProjectController.shared.saveProject(projectTitle: projectTitle, projectTheory: projectTheory) { (project) in
         
+        guard let project = project else {return}
+        print ("saved \(project.projectTitle)")
+      
         }
+        let _ = self.navigationController?.popViewController(animated: true)
     }
-
-}
+ 
+   
+    }

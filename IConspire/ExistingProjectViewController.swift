@@ -21,17 +21,18 @@ class ExistingProjectViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         guard let project = project else {return}
         SupportController.shared.fetchSupport(project: project) { (_) in
             DispatchQueue.main.async {
                 self.projectSupport.reloadData()
             }
         }
+        updateView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       self.projectSupport.reloadData()
     }
     
     

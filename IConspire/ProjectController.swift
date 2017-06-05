@@ -26,6 +26,7 @@ class ProjectController {
     
     func saveProject(projectTitle: String, projectTheory: String, completion: @escaping(Project?) -> Void) {
         let project = Project(projectTitle: projectTitle, projectTheory: projectTheory)
+        self.usersProjects.append(project)
         let record = CKRecord(project: project)
         cloudKitManager.saveRecord(record) { (savedProjectRecord, error) in
             if let error = error {
@@ -38,7 +39,7 @@ class ProjectController {
             self.usersProjects.append(project)
             completion(project)
         }
-        completion(project)
+      
     }
     
     func delete(withRecordID recordID: CKRecordID, completion: @escaping () -> Void) {

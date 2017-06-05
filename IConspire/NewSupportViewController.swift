@@ -29,8 +29,7 @@ class NewSupportViewController: UIViewController {
             else {return}
         
         SupportController.shared.saveSupport(supportTitle: title, supportSubTitle: subtitle, supportSource: source, supportAuthor: author, supportDate: Date(), supportBody: body, project: project) {  (_) in
-        
-           
+
             }
             let _ = self.navigationController?.popViewController(animated: true)
         }

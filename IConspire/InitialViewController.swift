@@ -54,16 +54,18 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.user = user
             }
         }
-  
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        
         ProjectController.shared.fetchProjects { (_) in
             DispatchQueue.main.async {
                 self.myProjects.reloadData()
                 print("fetched")
             }
         }
+  
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.myProjects.reloadData()
     }
     
     // MARK: - Table view data source
