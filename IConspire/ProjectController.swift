@@ -15,18 +15,17 @@ class ProjectController {
     var usersProjects = [Project]()
     static let shared = ProjectController()
     
-    func fetchProjects(completion: @escaping([Project]) -> Void){
+    func fetchProjects(completion: @escaping() -> Void){
         cloudKitManager.fetchUserProjects { (projects) in
             guard let projects = projects else {return}
             self.usersProjects = projects
-            completion(projects)
+            completion()
         }
         
     }
     
     func saveProject(projectTitle: String, projectTheory: String, completion: @escaping(Project?) -> Void) {
         let project = Project(projectTitle: projectTitle, projectTheory: projectTheory)
-        self.usersProjects.append(project)
         let record = CKRecord(project: project)
         cloudKitManager.saveRecord(record) { (savedProjectRecord, error) in
             if let error = error {

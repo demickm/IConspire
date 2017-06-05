@@ -29,7 +29,6 @@ class SupportController {
         guard let projectID = project.projectID else { completion(nil); return }
         let projectReference = CKReference(recordID: projectID, action: .deleteSelf)
         let support = Support(supportTitle: supportTitle, supportSubTitle: supportSubTitle, supportSource: supportSource, supportAuthor: supportAuthor, supportDate: supportDate, supportBody: supportBody, projectReference: projectReference)
-        self.support.append(support)
         let record = CKRecord(support: support)
         cloudKitManager.saveRecord(record) { (savedSupportFile, error) in
             if let error = error {

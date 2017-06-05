@@ -22,9 +22,10 @@ class NewProjectViewController: UIViewController {
         
         guard let project = project else {return}
         print ("saved \(project.projectTitle)")
-      
+        DispatchQueue.main.async {
+            let _ = self.navigationController?.popViewController(animated: true)
         }
-        let _ = self.navigationController?.popViewController(animated: true)
+        }
     }
  
    

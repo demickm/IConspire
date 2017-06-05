@@ -65,6 +65,7 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        SupportController.shared.support = []
         self.myProjects.reloadData()
     }
     

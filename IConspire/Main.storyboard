@@ -320,6 +320,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="SaveButton" destination="Ynd-Hj-o1W" id="CeV-qk-0B3"/>
                         <outlet property="authorEntry" destination="X9L-rC-MiG" id="94W-VU-8vT"/>
                         <outlet property="sourceEntry" destination="fH9-7G-7P5" id="a5A-r8-9uN"/>
                         <outlet property="subtitleEntry" destination="Ne2-1U-kde" id="YYI-8s-OF3"/>

@@ -12,8 +12,7 @@ class ExistingProjectViewController: UIViewController, UITableViewDataSource, UI
 
     let cloudKitManager = CloudKitManager()
     var project: Project?
-    
-    
+ 
     @IBOutlet weak var projectTitle: UILabel!
     @IBOutlet weak var projectDate: UILabel!
     @IBOutlet weak var projectTheory: UITextView!
@@ -72,7 +71,6 @@ class ExistingProjectViewController: UIViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

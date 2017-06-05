@@ -18,8 +18,10 @@ class NewSupportViewController: UIViewController {
     @IBOutlet weak var authorEntry: UITextField!
     @IBOutlet weak var supportBody: UITextView!
     
+    @IBOutlet weak var SaveButton: UIBarButtonItem!
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        SaveButton.isEnabled = false
         guard let title = titleEntry.text,
             let subtitle = subtitleEntry.text,
             let source = sourceEntry.text,
@@ -29,15 +31,17 @@ class NewSupportViewController: UIViewController {
             else {return}
         
         SupportController.shared.saveSupport(supportTitle: title, supportSubTitle: subtitle, supportSource: source, supportAuthor: author, supportDate: Date(), supportBody: body, project: project) {  (_) in
-
+            DispatchQueue.main.async {
+                let _ = self.navigationController?.popViewController(animated: true)
             }
-            let _ = self.navigationController?.popViewController(animated: true)
+            }
+        
         }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
     }
-
-
+    
 }
+
