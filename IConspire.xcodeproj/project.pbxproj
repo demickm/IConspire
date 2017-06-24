@@ -15,7 +15,6 @@
 		5D7FF9091EC1640700800975 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FF9081EC1640700800975 /* Project.swift */; };
 		5D7FF90B1EC1642800800975 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FF90A1EC1642800800975 /* User.swift */; };
 		5D7FF90E1EC165A700800975 /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FF90D1EC165A700800975 /* Support.swift */; };
-		5D7FF9101EC1660300800975 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FF90F1EC1660300800975 /* Image.swift */; };
 		5D7FF9141EC1669F00800975 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FF9131EC1669F00800975 /* CloudKitManager.swift */; };
 		5D7FF9171EC166C000800975 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FF9161EC166C000800975 /* InitialViewController.swift */; };
 		5D7FF9191EC1675000800975 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7FF9181EC1675000800975 /* UserController.swift */; };
@@ -39,7 +38,6 @@
 		5D7FF9081EC1640700800975 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		5D7FF90A1EC1642800800975 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5D7FF90D1EC165A700800975 /* Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
-		5D7FF90F1EC1660300800975 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		5D7FF9131EC1669F00800975 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		5D7FF9161EC166C000800975 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		5D7FF9181EC1675000800975 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			children = (
 				5D7FF90D1EC165A700800975 /* Support.swift */,
 				5D7FF9081EC1640700800975 /* Project.swift */,
-				5D7FF90F1EC1660300800975 /* Image.swift */,
 				5D7FF90A1EC1642800800975 /* User.swift */,
 			);
 			name = Model;
@@ -247,7 +244,6 @@
 				5D7FF9141EC1669F00800975 /* CloudKitManager.swift in Sources */,
 				5D7FF9091EC1640700800975 /* Project.swift in Sources */,
 				5D7FF90B1EC1642800800975 /* User.swift in Sources */,
-				5D7FF9101EC1660300800975 /* Image.swift in Sources */,
 				5D8F53511EC39BE0009CAE52 /* SupportController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

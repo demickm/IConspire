@@ -17,7 +17,6 @@ class NewSupportViewController: UIViewController {
     @IBOutlet weak var sourceEntry: UITextField!
     @IBOutlet weak var authorEntry: UITextField!
     @IBOutlet weak var supportBody: UITextView!
-    
     @IBOutlet weak var SaveButton: UIBarButtonItem!
     
     @IBAction func saveButtonTapped(_ sender: Any) {

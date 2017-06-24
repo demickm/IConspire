@@ -20,7 +20,7 @@ class ExistingSupportViewController: UIViewController {
     @IBOutlet weak var supportAuthor: UITextField!
     @IBOutlet weak var supportBody: UITextView!
     @IBOutlet weak var updateButton: UIBarButtonItem!
-    
+    @IBOutlet weak var supportDate: UITextField!
     
     // MARK: - Actions
     
@@ -40,7 +40,22 @@ class ExistingSupportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
+        supportDate.isEnabled = false
         // Do any additional setup after loading the view.
+    }
+    
+    func viewWillDisappear() {
+        guard let support = support, let title = supportTitle.text, let subtitle = supportSubTitle.text, let source = supportSource.text, let author = supportAuthor.text, let body = supportBody.text else {return}
+        support.supportTitle = title
+        support.supportSubTitle = subtitle
+        support.supportSource = source
+        support.supportAuthor = author
+        support.supportBody = body
+        
+        SupportController.shared.modifySupport(support: support) {
+            
+        }
+        
     }
 
     func updateView() {
@@ -50,9 +65,15 @@ class ExistingSupportViewController: UIViewController {
         supportSource.text = support.supportSource
         supportAuthor.text = support.supportAuthor
         supportBody.text = support.supportBody
-        
+        supportDate.text = dateFormatter.string(from: support.supportDate)
     }
 
-    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
 
 }
