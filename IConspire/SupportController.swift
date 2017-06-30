@@ -25,10 +25,10 @@ class SupportController {
     }
     
     
-    func saveSupport(supportTitle: String, supportSubTitle: String, supportSource: String, supportAuthor: String, supportDate: Date, supportBody: String, project: Project, completion: @escaping(Support?) -> Void) {
+    func saveSupport(supportTitle: String, supportSubTitle: String, supportSource: String, supportAuthor: String, supportDate: Date, supportBody: String, supportLatitude: Double, supportLongitude: Double, project: Project, completion: @escaping(Support?) -> Void) {
         guard let projectID = project.projectID else { completion(nil); return }
         let projectReference = CKReference(recordID: projectID, action: .deleteSelf)
-        let support = Support(supportTitle: supportTitle, supportSubTitle: supportSubTitle, supportSource: supportSource, supportAuthor: supportAuthor, supportDate: supportDate, supportBody: supportBody, projectReference: projectReference)
+        let support = Support(supportTitle: supportTitle, supportSubTitle: supportSubTitle, supportSource: supportSource, supportAuthor: supportAuthor, supportDate: supportDate, supportBody: supportBody, supportLatitude: supportLatitude, supportLongitude: supportLongitude, projectReference: projectReference)
         let record = CKRecord(support: support)
         cloudKitManager.saveRecord(record) { (savedSupportFile, error) in
             if let error = error {

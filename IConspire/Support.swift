@@ -19,6 +19,8 @@ class Support: Equatable {
     static let supportAuthorKey = "supportAuthor"
     static let supportDateKey = "supportDate"
     static let supportBodyKey = "supportBody"
+    static let supportLatitudeKey = "supportLatitude"
+    static let supportLongitudeKey = "supportLongitude"
     static let projectReferenceKey = "projectReference"
  
     // MARK: - Properties
@@ -29,10 +31,12 @@ class Support: Equatable {
     var supportAuthor: String
     let supportDate: Date
     var supportBody: String
+    var supportLatitude: Double
+    var supportLongitude: Double
     var supportID: CKRecordID?
     let projectReference: CKReference
     
-    init(supportTitle: String, supportSubTitle: String, supportSource: String, supportAuthor: String, supportDate: Date, supportBody: String, projectReference: CKReference) {
+    init(supportTitle: String, supportSubTitle: String, supportSource: String, supportAuthor: String, supportDate: Date, supportBody: String, supportLatitude: Double, supportLongitude: Double, projectReference: CKReference) {
         
         self.supportTitle = supportTitle
         self.supportSubTitle = supportSubTitle
@@ -40,6 +44,8 @@ class Support: Equatable {
         self.supportAuthor = supportAuthor
         self.supportDate = supportDate
         self.supportBody = supportBody
+        self.supportLatitude = supportLatitude
+        self.supportLongitude = supportLongitude
         self.projectReference = projectReference
     }
     
@@ -51,6 +57,8 @@ class Support: Equatable {
             let supportAuthor = record[Support.supportAuthorKey] as? String,
             let supportDate = record[Support.supportDateKey] as? Date,
             let supportBody = record[Support.supportBodyKey] as? String,
+            let supportLatitude = record[Support.supportLatitudeKey] as? Double,
+            let supportLongitude = record[Support.supportLongitudeKey] as? Double,
             let projectReference = record[Support.projectReferenceKey] as? CKReference
             else { return nil }
         
@@ -60,6 +68,8 @@ class Support: Equatable {
         self.supportAuthor = supportAuthor
         self.supportDate = supportDate
         self.supportBody = supportBody
+        self.supportLatitude = supportLatitude
+        self.supportLongitude = supportLongitude
         self.supportID = record.recordID
         self.projectReference = projectReference
     }
@@ -77,6 +87,8 @@ extension CKRecord {
         self.setValue(support.supportAuthor, forKey: Support.supportAuthorKey)
         self.setValue(support.supportDate, forKey: Support.supportDateKey)
         self.setValue(support.supportBody, forKey: Support.supportBodyKey)
+        self.setValue(support.supportLatitude, forKey: Support.supportLatitudeKey)
+        self.setValue(support.supportLongitude, forKey: Support.supportLongitudeKey)
         self.setValue(support.projectReference, forKey: Support.projectReferenceKey)
     
     }

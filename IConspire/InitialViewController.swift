@@ -38,6 +38,7 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
     func updateView() {
         guard let user = user else {
             self.submitButton.isEnabled = true
+            self.submitButton.isHidden = false
             self.alias.isEnabled = true
             return }
         alias.text = user.userName
@@ -49,6 +50,7 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.submitButton.isHidden = true
         cloudKitManager.fetchCurrentUser { (user) in
             DispatchQueue.main.async {
                 self.user = user

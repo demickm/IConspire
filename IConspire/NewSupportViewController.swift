@@ -18,18 +18,28 @@ class NewSupportViewController: UIViewController {
     @IBOutlet weak var authorEntry: UITextField!
     @IBOutlet weak var supportBody: UITextView!
     @IBOutlet weak var SaveButton: UIBarButtonItem!
+    @IBOutlet weak var latitudeEntry: UITextField!
+    @IBOutlet weak var longitudeEntry: UITextField!
+    
+    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         SaveButton.isEnabled = false
+        guard let latitudeAsDouble = latitudeEntry.text,
+              let longitudeAsDouble = longitudeEntry.text
+            else {return}
+        
         guard let title = titleEntry.text,
             let subtitle = subtitleEntry.text,
             let source = sourceEntry.text,
             let author = authorEntry.text,
             let body = supportBody.text,
+            let latitude = Double(latitudeAsDouble),
+            let longitude = Double(longitudeAsDouble),
             let project = project
             else {return}
-        
-        SupportController.shared.saveSupport(supportTitle: title, supportSubTitle: subtitle, supportSource: source, supportAuthor: author, supportDate: Date(), supportBody: body, project: project) {  (_) in
+ 
+        SupportController.shared.saveSupport(supportTitle: title, supportSubTitle: subtitle, supportSource: source, supportAuthor: author, supportDate: Date(), supportBody: body, supportLatitude: latitude, supportLongitude: longitude, project: project) {  (_) in
             DispatchQueue.main.async {
                 let _ = self.navigationController?.popViewController(animated: true)
             }

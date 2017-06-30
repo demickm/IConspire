@@ -21,20 +21,13 @@ class ExistingSupportViewController: UIViewController {
     @IBOutlet weak var supportBody: UITextView!
     @IBOutlet weak var updateButton: UIBarButtonItem!
     @IBOutlet weak var supportDate: UITextField!
+    @IBOutlet weak var latitudeEntry: UITextField!
+    @IBOutlet weak var longitudeEntry: UITextField!
     
     // MARK: - Actions
     
     @IBAction func updateButtonTapped(_ sender: Any) {
-        guard let support = support, let title = supportTitle.text, let subtitle = supportSubTitle.text, let source = supportSource.text, let author = supportAuthor.text, let body = supportBody.text else {return}
-        support.supportTitle = title
-        support.supportSubTitle = subtitle
-        support.supportSource = source
-        support.supportAuthor = author
-        support.supportBody = body
-        
-        SupportController.shared.modifySupport(support: support) {
-        
-        }
+       updateFile()
     }
     
     override func viewDidLoad() {
@@ -45,16 +38,7 @@ class ExistingSupportViewController: UIViewController {
     }
     
     func viewWillDisappear() {
-        guard let support = support, let title = supportTitle.text, let subtitle = supportSubTitle.text, let source = supportSource.text, let author = supportAuthor.text, let body = supportBody.text else {return}
-        support.supportTitle = title
-        support.supportSubTitle = subtitle
-        support.supportSource = source
-        support.supportAuthor = author
-        support.supportBody = body
-        
-        SupportController.shared.modifySupport(support: support) {
-            
-        }
+        updateFile()
         
     }
 
@@ -66,8 +50,38 @@ class ExistingSupportViewController: UIViewController {
         supportAuthor.text = support.supportAuthor
         supportBody.text = support.supportBody
         supportDate.text = dateFormatter.string(from: support.supportDate)
+        latitudeEntry.text = "\(support.supportLatitude)"
+        longitudeEntry.text = "\(support.supportLongitude)"
     }
-
+    
+    func updateFile(){
+        
+        guard let latitudeAsDouble = latitudeEntry.text,
+            let longitudeAsDouble = longitudeEntry.text
+            else {return}
+    
+        guard let support = support,
+            let title = supportTitle.text,
+            let subtitle = supportSubTitle.text,
+            let source = supportSource.text,
+            let author = supportAuthor.text,
+            let body = supportBody.text,
+            let latitude = Double(latitudeAsDouble),
+            let longitude = Double(longitudeAsDouble)
+            else {return}
+    
+        support.supportTitle = title
+        support.supportSubTitle = subtitle
+        support.supportSource = source
+        support.supportAuthor = author
+        support.supportBody = body
+        support.supportLatitude = latitude
+        support.supportLongitude = longitude
+        SupportController.shared.modifySupport(support: support) {
+    
+    }
+    }
+    
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
