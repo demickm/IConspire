@@ -92,8 +92,13 @@ class ExistingProjectViewController: UIViewController, UITableViewDataSource, UI
                 let supportCell = SupportController.shared.support[indexPath.row]
                 destinationViewController.support = supportCell
                 
-            }
-        } // end toNewSupport
+        } else if segue.identifier == "toMapView" {
+            guard let destinationViewController = segue.destination as? MapViewController else {return}
+            let support = SupportController.shared.support
+            destinationViewController.support = support
+   
+        }
+        }
 
         let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()

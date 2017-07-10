@@ -22,6 +22,7 @@
 		5D8F53551EC3A789009CAE52 /* ExistingProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F53541EC3A789009CAE52 /* ExistingProjectViewController.swift */; };
 		5D8F53571EC3A9C7009CAE52 /* NewSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F53561EC3A9C7009CAE52 /* NewSupportViewController.swift */; };
 		5D8F535A1EC3A9EA009CAE52 /* ExistingSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F53591EC3A9EA009CAE52 /* ExistingSupportViewController.swift */; };
+		5D9DA21E1F0C8CCE00DD885E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DA21D1F0C8CCE00DD885E /* MapViewController.swift */; };
 		5DAE92001EC241DF003F414B /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE91FF1EC241DF003F414B /* NewProjectViewController.swift */; };
 		5DAE92021EC24605003F414B /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE92011EC24605003F414B /* ProjectController.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		5D8F53541EC3A789009CAE52 /* ExistingProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingProjectViewController.swift; sourceTree = "<group>"; };
 		5D8F53561EC3A9C7009CAE52 /* NewSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSupportViewController.swift; sourceTree = "<group>"; };
 		5D8F53591EC3A9EA009CAE52 /* ExistingSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingSupportViewController.swift; sourceTree = "<group>"; };
+		5D9DA21D1F0C8CCE00DD885E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5DAE91FF1EC241DF003F414B /* NewProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 		5DAE92011EC24605003F414B /* ProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 				5D8F53541EC3A789009CAE52 /* ExistingProjectViewController.swift */,
 				5D8F53561EC3A9C7009CAE52 /* NewSupportViewController.swift */,
 				5D8F53591EC3A9EA009CAE52 /* ExistingSupportViewController.swift */,
+				5D9DA21D1F0C8CCE00DD885E /* MapViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				5D7FF9091EC1640700800975 /* Project.swift in Sources */,
 				5D7FF90B1EC1642800800975 /* User.swift in Sources */,
 				5D8F53511EC39BE0009CAE52 /* SupportController.swift in Sources */,
+				5D9DA21E1F0C8CCE00DD885E /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

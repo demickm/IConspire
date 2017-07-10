@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -232,11 +233,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QZL-1T-VR1">
-                        <barButtonItem key="rightBarButtonItem" title="Add Support" id="Whg-zJ-eu9">
-                            <connections>
-                                <segue destination="Rq2-Tg-mLq" kind="show" identifier="toNewSupport" id="Vzo-EJ-fcK"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add Support" id="Whg-zJ-eu9">
+                                <connections>
+                                    <segue destination="Rq2-Tg-mLq" kind="show" identifier="toNewSupport" id="Vzo-EJ-fcK"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Map" id="twJ-jp-Cit">
+                                <connections>
+                                    <segue destination="bNC-7w-WA8" kind="show" identifier="toMapView" id="maR-eD-Gm6"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="projectDate" destination="lbq-Pt-cL8" id="npF-Dy-RdB"/>
@@ -351,6 +359,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KY3-eW-HcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3187.5" y="-89.788732394366193"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="SY3-kS-8RE">
+            <objects>
+                <viewController id="bNC-7w-WA8" customClass="MapViewController" customModule="IConspire" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1hy-kq-qMq"/>
+                        <viewControllerLayoutGuide type="bottom" id="a2z-ap-Wai"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wmu-zA-T9z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h6h-5d-PUc">
+                                <rect key="frame" x="16" y="64" width="288" height="504"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a2z-ap-Wai" firstAttribute="top" secondItem="h6h-5d-PUc" secondAttribute="bottom" id="7Gf-jC-kHn"/>
+                            <constraint firstItem="h6h-5d-PUc" firstAttribute="top" secondItem="1hy-kq-qMq" secondAttribute="bottom" id="8te-Zf-pVd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="h6h-5d-PUc" secondAttribute="trailing" id="Ffv-r7-OtG"/>
+                            <constraint firstItem="h6h-5d-PUc" firstAttribute="leading" secondItem="wmu-zA-T9z" secondAttribute="leadingMargin" id="rhS-0e-pVL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="h6h-5d-PUc" id="u6E-t2-bu5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cpi-Mv-Nz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2003" y="1044"/>
         </scene>
         <!--Existing Support View Controller-->
         <scene sceneID="kdt-89-yMK">
