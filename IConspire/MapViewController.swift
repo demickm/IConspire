@@ -17,7 +17,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         var support: [Support]?
     
         var locationManager: CLLocationManager = CLLocationManager()
-        var eventLocations: CustomAnnotations?
+        var eventLocation: CustomAnnotations?
+        var eventLocations: [CustomAnnotations] = []
         var currentLocation: CustomAnnotations?
         
         override func viewDidLoad() {
@@ -33,16 +34,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 let supportLatitude = locations.supportLatitude
                 let supportLongitude = locations.supportLongitude
                 let supportTitle = locations.supportTitle
-                eventLocations = CustomAnnotations(latitude: supportLatitude, longitude: supportLongitude, name: supportTitle)
-            if let eventLocation = eventLocations {
-                mapView.showAnnotations([eventLocation], animated: true)
-            }
-            
+                eventLocation = CustomAnnotations(latitude: supportLatitude, longitude: supportLongitude, name: supportTitle)
+                guard let eventLocation = eventLocation else {return}
+                
+                eventLocations.append(eventLocation)
+
+                mapView.showAnnotations(eventLocations, animated: true)
+
             }
             locationManager.stopUpdatingLocation()
-           
-        }
-        
+    }
+    
         
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             
@@ -52,12 +54,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 let locationAnnotation = CustomAnnotations(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, name: "My Location")
                 
-                if let eventLocation = eventLocations {
+                if let eventLocation = eventLocation {
                     mapView.showAnnotations([eventLocation, locationAnnotation], animated: true)
                 }
             }
         }
-        
+    
 
     
     class CustomAnnotations: NSObject, MKAnnotation {
