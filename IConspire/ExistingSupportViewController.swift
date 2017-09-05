@@ -23,7 +23,8 @@ class ExistingSupportViewController: UIViewController {
     @IBOutlet weak var supportDate: UITextField!
     @IBOutlet weak var latitudeEntry: UITextField!
     @IBOutlet weak var longitudeEntry: UITextField!
-    
+    @IBOutlet weak var supportImage: UIImageView!
+   
     // MARK: - Actions
     
     @IBAction func updateButtonTapped(_ sender: Any) {
@@ -52,6 +53,7 @@ class ExistingSupportViewController: UIViewController {
         supportDate.text = dateFormatter.string(from: support.supportDate)
         latitudeEntry.text = "\(support.supportLatitude)"
         longitudeEntry.text = "\(support.supportLongitude)"
+        supportImage.image = support.supportImage
     }
     
     func updateFile(){

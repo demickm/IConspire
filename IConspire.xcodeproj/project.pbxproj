@@ -25,6 +25,7 @@
 		5D9DA21E1F0C8CCE00DD885E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DA21D1F0C8CCE00DD885E /* MapViewController.swift */; };
 		5DAE92001EC241DF003F414B /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE91FF1EC241DF003F414B /* NewProjectViewController.swift */; };
 		5DAE92021EC24605003F414B /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE92011EC24605003F414B /* ProjectController.swift */; };
+		5DB3CCB61F591C4C0099D95A /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3CCB51F591C4C0099D95A /* ImageHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		5D9DA21D1F0C8CCE00DD885E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5DAE91FF1EC241DF003F414B /* NewProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 		5DAE92011EC24605003F414B /* ProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
+		5DB3CCB51F591C4C0099D95A /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				5D7FF9161EC166C000800975 /* InitialViewController.swift */,
 				5D8F53541EC3A789009CAE52 /* ExistingProjectViewController.swift */,
 				5D8F53561EC3A9C7009CAE52 /* NewSupportViewController.swift */,
+				5DB3CCB51F591C4C0099D95A /* ImageHandler.swift */,
 				5D8F53591EC3A9EA009CAE52 /* ExistingSupportViewController.swift */,
 				5D9DA21D1F0C8CCE00DD885E /* MapViewController.swift */,
 			);
@@ -245,6 +248,7 @@
 				5D7FF90E1EC165A700800975 /* Support.swift in Sources */,
 				5DAE92021EC24605003F414B /* ProjectController.swift in Sources */,
 				5D7FF9141EC1669F00800975 /* CloudKitManager.swift in Sources */,
+				5DB3CCB61F591C4C0099D95A /* ImageHandler.swift in Sources */,
 				5D7FF9091EC1640700800975 /* Project.swift in Sources */,
 				5D7FF90B1EC1642800800975 /* User.swift in Sources */,
 				5D8F53511EC39BE0009CAE52 /* SupportController.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import UIKit
 
 class Support: Equatable {
     
@@ -22,7 +23,8 @@ class Support: Equatable {
     static let supportLatitudeKey = "supportLatitude"
     static let supportLongitudeKey = "supportLongitude"
     static let projectReferenceKey = "projectReference"
- 
+    static let supportImageDataKey = "supportImageData"
+   
     // MARK: - Properties
     
     var supportTitle: String
@@ -35,8 +37,24 @@ class Support: Equatable {
     var supportLongitude: Double
     var supportID: CKRecordID?
     let projectReference: CKReference
+    var supportImageData: Data
     
-    init(supportTitle: String, supportSubTitle: String, supportSource: String, supportAuthor: String, supportDate: Date, supportBody: String, supportLatitude: Double, supportLongitude: Double, projectReference: CKReference) {
+    fileprivate var temporaryPhotoURL: URL {
+        let tempDir = NSTemporaryDirectory()
+        let tempURL = URL(fileURLWithPath: tempDir)
+        let fileURL = tempURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("png")
+        try? supportImageData.write(to: fileURL, options: [.atomic])
+        return fileURL
+    }
+    
+    var supportImage: UIImage {
+        let imageData = supportImageData
+        guard let image = UIImage(data: imageData) else { return UIImage() }
+        return image
+    }
+
+
+    init(supportTitle: String, supportSubTitle: String, supportSource: String, supportAuthor: String, supportDate: Date, supportBody: String, supportLatitude: Double, supportLongitude: Double, projectReference: CKReference, supportImageData: Data) {
         
         self.supportTitle = supportTitle
         self.supportSubTitle = supportSubTitle
@@ -47,6 +65,7 @@ class Support: Equatable {
         self.supportLatitude = supportLatitude
         self.supportLongitude = supportLongitude
         self.projectReference = projectReference
+        self.supportImageData = supportImageData
     }
     
     
@@ -59,7 +78,8 @@ class Support: Equatable {
             let supportBody = record[Support.supportBodyKey] as? String,
             let supportLatitude = record[Support.supportLatitudeKey] as? Double,
             let supportLongitude = record[Support.supportLongitudeKey] as? Double,
-            let projectReference = record[Support.projectReferenceKey] as? CKReference
+            let projectReference = record[Support.projectReferenceKey] as? CKReference,
+            let photoAsset = record[Support.supportImageDataKey] as? CKAsset
             else { return nil }
         
         self.supportTitle = supportTitle
@@ -72,6 +92,10 @@ class Support: Equatable {
         self.supportLongitude = supportLongitude
         self.supportID = record.recordID
         self.projectReference = projectReference
+        let imageDataOpt = try? Data(contentsOf: photoAsset.fileURL)
+        guard let imageData = imageDataOpt else { return nil }
+        self.supportImageData = imageData
+    
     }
 
 } // End Support Model Class
@@ -90,6 +114,8 @@ extension CKRecord {
         self.setValue(support.supportLatitude, forKey: Support.supportLatitudeKey)
         self.setValue(support.supportLongitude, forKey: Support.supportLongitudeKey)
         self.setValue(support.projectReference, forKey: Support.projectReferenceKey)
+        let imageAsset = CKAsset(fileURL: support.temporaryPhotoURL)
+        self.setValue(imageAsset, forKey: Support.supportImageDataKey)
     
     }
 }

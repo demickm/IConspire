@@ -43,7 +43,6 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
             return }
         alias.text = user.userName
         self.submitButton.isEnabled = false
-        self.submitButton.isHidden = true
         self.alias.isEnabled = false
         
     }

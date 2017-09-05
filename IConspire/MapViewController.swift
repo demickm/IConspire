@@ -59,9 +59,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 }
             }
         }
-    
-
-    
+  
     class CustomAnnotations: NSObject, MKAnnotation {
         
         var latitude: Double

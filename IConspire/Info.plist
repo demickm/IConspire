@@ -22,6 +22,10 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To Show Event Location in Comparison to Your Current Location</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To add photo using your devices camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To add desired photo from personal library to support image.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
