@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExistingSupportViewController: UIViewController {
+class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     var support: Support?
     
@@ -82,6 +82,29 @@ class ExistingSupportViewController: UIViewController {
         SupportController.shared.modifySupport(support: support) {
     
     }
+    }
+   
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if supportTitle.isFirstResponder {
+            supportSubTitle.becomeFirstResponder()
+        } else if supportSubTitle.isFirstResponder {
+            supportSource.becomeFirstResponder()
+        } else if supportSource.isFirstResponder {
+            supportAuthor.becomeFirstResponder()
+        } else if supportAuthor.isFirstResponder {
+            latitudeEntry.becomeFirstResponder()
+        } else if latitudeEntry.isFirstResponder {
+            longitudeEntry.becomeFirstResponder()
+        } else if longitudeEntry.isFirstResponder {
+            supportBody.becomeFirstResponder()
+        }
+        
+        return true
+    }
+    
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        supportBody.resignFirstResponder()
     }
     
     let dateFormatter: DateFormatter = {

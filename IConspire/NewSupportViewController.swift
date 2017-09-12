@@ -105,10 +105,20 @@ func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMe
 }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        if supportBody.isFirstResponder {
-            supportBody.resignFirstResponder()
+        if titleEntry.isFirstResponder {
+            subtitleEntry.becomeFirstResponder()
+        } else if subtitleEntry.isFirstResponder {
+                sourceEntry.becomeFirstResponder()
+        } else if sourceEntry.isFirstResponder {
+            authorEntry.becomeFirstResponder()
+        } else if authorEntry.isFirstResponder {
+            latitudeEntry.becomeFirstResponder()
+        } else if latitudeEntry.isFirstResponder {
+            longitudeEntry.becomeFirstResponder()
+        } else if longitudeEntry.isFirstResponder {
+            supportBody.becomeFirstResponder()
         }
+    
         return true
     }
     
@@ -116,6 +126,11 @@ func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMe
         super.viewDidLoad()
        
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        supportBody.resignFirstResponder()
+    }
+
 
 }
 

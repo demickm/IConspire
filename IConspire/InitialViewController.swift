@@ -11,6 +11,7 @@ import UIKit
 class InitialViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let cloudKitManager = CloudKitManager()
+    var hasAlias: Bool = false
     
     // MARK: - Outlets
     
@@ -18,16 +19,31 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var myProjects: UITableView!
     
+    @IBOutlet weak var databaseComunicationIndiicator: UIActivityIndicatorView!
     // MARK: - Actions
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        guard let alias = alias.text else {return}
+        guard let alias = alias.text, let user = user else {return}
         submitButton.isEnabled = false
         self.alias.isEnabled = false
-        UserController.shared.saveUser(userName: alias) { (user) in
-            self.user = user
+        databaseComunicationIndiicator.startAnimating()
+        if hasAlias == false {
+            UserController.shared.saveUser(userName: alias) { (user) in
+                self.user = user
+                self.submitButton.isEnabled = true
+                self.alias.isEnabled = true
+                self.databaseComunicationIndiicator.stopAnimating()
+                }
+        } else {
+            user.userName = alias
+            UserController.shared.modifyUser(user: user) { 
+                self.submitButton.isEnabled = true
+                self.alias.isEnabled = true
+                self.databaseComunicationIndiicator.stopAnimating()
+            }
         }
     }
+
     
     var user: User? {
         didSet {
@@ -38,18 +54,17 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
     func updateView() {
         guard let user = user else {
             self.submitButton.isEnabled = true
-            self.submitButton.isHidden = false
             self.alias.isEnabled = true
+            hasAlias = false
             return }
         alias.text = user.userName
-        self.submitButton.isEnabled = false
-        self.alias.isEnabled = false
+        hasAlias = true
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.submitButton.isHidden = true
+        databaseComunicationIndiicator.startAnimating()
         cloudKitManager.fetchCurrentUser { (user) in
             DispatchQueue.main.async {
                 self.user = user
@@ -60,6 +75,7 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
             DispatchQueue.main.async {
                 self.myProjects.reloadData()
                 print("fetched")
+                self.databaseComunicationIndiicator.stopAnimating()
             }
         }
   

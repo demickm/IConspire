@@ -14,8 +14,15 @@ class NewProjectViewController: UIViewController {
     @IBOutlet weak var projectTheory: UITextView!
     @IBOutlet weak var saveButtonTapped: UIBarButtonItem!
     
+    @IBOutlet weak var databaseCommunicationIndicator: UIActivityIndicatorView!
+    
+    override func viewDidLoad() {
+        databaseCommunicationIndicator.stopAnimating()
+    }
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
        saveButtonTapped.isEnabled = false
+        databaseCommunicationIndicator.startAnimating()
         guard let projectTitle = projectTitle.text,
             let projectTheory = projectTheory.text else {return}
      ProjectController.shared.saveProject(projectTitle: projectTitle, projectTheory: projectTheory) { (project) in
@@ -25,6 +32,8 @@ class NewProjectViewController: UIViewController {
         DispatchQueue.main.async {
             let _ = self.navigationController?.popViewController(animated: true)
         }
+        self.databaseCommunicationIndicator.stopAnimating()
+        
         }
     }
  

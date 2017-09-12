@@ -17,21 +17,25 @@ class ExistingProjectViewController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var projectDate: UILabel!
     @IBOutlet weak var projectTheory: UITextView!
     @IBOutlet weak var projectSupport: UITableView!
-    
+    @IBOutlet weak var databaseCommunicationIndicator: UIActivityIndicatorView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let project = project else {return}
+        
         SupportController.shared.fetchSupport(project: project) { (_) in
             DispatchQueue.main.async {
                 self.projectSupport.reloadData()
             }
+            self.databaseCommunicationIndicator.stopAnimating()
+            
         }
         updateView()
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       self.projectSupport.reloadData()
+        projectSupport.reloadData()
     }
     
     
@@ -40,9 +44,9 @@ class ExistingProjectViewController: UIViewController, UITableViewDataSource, UI
             let theory = projectTheory.text else {return}
         project.projectTitle = title
         project.projectTheory = theory
-       
+        
         ProjectController.shared.modifyProject(project: project) { 
-            
+           
         }
     }
     
