@@ -364,6 +364,10 @@
                                     <action selector="addImageButtonTapped:" destination="Rq2-Tg-mLq" eventType="touchUpInside" id="Fyx-pr-9dM"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZmS-cJ-0mF">
+                                <rect key="frame" x="142" y="265.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47317179570000001" blue="0.052408895810000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -377,9 +381,11 @@
                             <constraint firstItem="fBW-oX-ZQh" firstAttribute="trailing" secondItem="7FC-Q6-ATF" secondAttribute="trailingMargin" id="RVr-AX-POR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fH9-7G-7P5" secondAttribute="trailing" constant="144" id="TBA-YB-3dN"/>
                             <constraint firstItem="3PS-Rt-Hfs" firstAttribute="trailing" secondItem="X9L-rC-MiG" secondAttribute="centerX" constant="-3" id="U2i-0K-dDs"/>
+                            <constraint firstItem="ZmS-cJ-0mF" firstAttribute="centerY" secondItem="7FC-Q6-ATF" secondAttribute="centerY" id="VGZ-Sm-r2K"/>
                             <constraint firstItem="3rr-34-7K6" firstAttribute="leading" secondItem="7FC-Q6-ATF" secondAttribute="leadingMargin" id="Yh1-gA-NgE"/>
                             <constraint firstItem="8aY-pz-y2i" firstAttribute="trailing" secondItem="7FC-Q6-ATF" secondAttribute="trailingMargin" id="cWL-xP-I4Y"/>
                             <constraint firstItem="STb-DP-Jfc" firstAttribute="top" secondItem="3rr-34-7K6" secondAttribute="top" id="fsw-qs-fqm"/>
+                            <constraint firstItem="ZmS-cJ-0mF" firstAttribute="centerX" secondItem="7FC-Q6-ATF" secondAttribute="centerX" id="fza-wT-D8z"/>
                             <constraint firstItem="fH9-7G-7P5" firstAttribute="leading" secondItem="7FC-Q6-ATF" secondAttribute="leadingMargin" id="g8o-ZS-hcl"/>
                             <constraint firstItem="Ne2-1U-kde" firstAttribute="leading" secondItem="7FC-Q6-ATF" secondAttribute="leadingMargin" id="gwV-ts-y2y"/>
                             <constraint firstItem="Ne2-1U-kde" firstAttribute="top" secondItem="njf-PQ-ZqD" secondAttribute="bottom" constant="8" id="hC8-Kb-hb6"/>
@@ -409,6 +415,7 @@
                         <outlet property="SaveButton" destination="Ynd-Hj-o1W" id="CeV-qk-0B3"/>
                         <outlet property="addImageButton" destination="3rr-34-7K6" id="v3l-tk-vfy"/>
                         <outlet property="authorEntry" destination="X9L-rC-MiG" id="94W-VU-8vT"/>
+                        <outlet property="databaseCommunicationIndicator" destination="ZmS-cJ-0mF" id="98L-9L-wmA"/>
                         <outlet property="latitudeEntry" destination="3PS-Rt-Hfs" id="Tsu-pW-0un"/>
                         <outlet property="longitudeEntry" destination="8aY-pz-y2i" id="eMJ-ca-v94"/>
                         <outlet property="sourceEntry" destination="fH9-7G-7P5" id="a5A-r8-9uN"/>
@@ -457,7 +464,7 @@
         <!--Existing Support View Controller-->
         <scene sceneID="kdt-89-yMK">
             <objects>
-                <viewController id="UjM-fr-H0b" customClass="ExistingSupportViewController" customModule="IConspire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="UjM-fr-H0b" customClass="ExistingSupportViewController" customModule="IConspire" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="81V-Eb-K2Z"/>
                         <viewControllerLayoutGuide type="bottom" id="XiD-PR-9aD"/>
@@ -473,7 +480,7 @@
                                     <constraint firstAttribute="height" constant="109" id="5qx-rn-ygu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="UjM-fr-H0b" id="beW-CB-0R3"/>
                                 </connections>
@@ -541,6 +548,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BAH-jv-tm3">
                                 <rect key="frame" x="16" y="379" width="288" height="181"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BQ2-7h-c3W">
+                                <rect key="frame" x="142" y="265.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47317179570000001" blue="0.052408895810000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -563,6 +574,8 @@
                             <constraint firstItem="pqe-B5-2MB" firstAttribute="top" secondItem="81V-Eb-K2Z" secondAttribute="bottom" constant="8" id="YN8-uS-RVZ"/>
                             <constraint firstItem="3jB-Sr-bbM" firstAttribute="trailing" secondItem="Elo-pb-vG0" secondAttribute="trailingMargin" id="hfw-Za-II2"/>
                             <constraint firstItem="CaE-eh-mUU" firstAttribute="top" secondItem="r8o-jt-VTv" secondAttribute="bottom" constant="8" id="iOq-lY-nA9"/>
+                            <constraint firstItem="BQ2-7h-c3W" firstAttribute="centerX" secondItem="Elo-pb-vG0" secondAttribute="centerX" id="kHm-9M-qPd"/>
+                            <constraint firstItem="BQ2-7h-c3W" firstAttribute="centerY" secondItem="Elo-pb-vG0" secondAttribute="centerY" id="meH-9r-y9P"/>
                             <constraint firstItem="Juf-Nd-03v" firstAttribute="trailing" secondItem="r8o-jt-VTv" secondAttribute="centerX" constant="-3" id="ohu-t8-zRa"/>
                             <constraint firstItem="pqe-B5-2MB" firstAttribute="trailing" secondItem="Elo-pb-vG0" secondAttribute="trailingMargin" id="pZR-EC-BTJ"/>
                             <constraint firstItem="3jB-Sr-bbM" firstAttribute="leading" secondItem="Elo-pb-vG0" secondAttribute="leadingMargin" id="rBS-o6-Bnn"/>
@@ -583,6 +596,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="databaseCommunicationIndicator" destination="BQ2-7h-c3W" id="Jo6-yF-TpE"/>
                         <outlet property="latitudeEntry" destination="Juf-Nd-03v" id="GZy-7S-qIr"/>
                         <outlet property="longitudeEntry" destination="CaE-eh-mUU" id="1CL-RZ-zU3"/>
                         <outlet property="supportAuthor" destination="r8o-jt-VTv" id="JQX-Kj-wnc"/>

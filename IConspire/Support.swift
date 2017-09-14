@@ -54,7 +54,7 @@ class Support: Equatable {
     }
 
 
-    init(supportTitle: String, supportSubTitle: String, supportSource: String, supportAuthor: String, supportDate: Date, supportBody: String, supportLatitude: Double, supportLongitude: Double, projectReference: CKReference, supportImageData: Data) {
+    init(supportTitle: String, supportSubTitle: String, supportSource: String, supportAuthor: String, supportDate: Date, supportBody: String, supportLatitude: Double = 0.0, supportLongitude: Double = 0.0, projectReference: CKReference, supportImageData: Data) {
         
         self.supportTitle = supportTitle
         self.supportSubTitle = supportSubTitle

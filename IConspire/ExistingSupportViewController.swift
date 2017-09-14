@@ -25,6 +25,7 @@ class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITe
     @IBOutlet weak var longitudeEntry: UITextField!
     @IBOutlet weak var supportImage: UIImageView!
    
+    @IBOutlet weak var databaseCommunicationIndicator: UIActivityIndicatorView!
     // MARK: - Actions
     
     @IBAction func updateButtonTapped(_ sender: Any) {
@@ -35,6 +36,7 @@ class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITe
         super.viewDidLoad()
         updateView()
         supportDate.isEnabled = false
+        databaseCommunicationIndicator.stopAnimating()
         // Do any additional setup after loading the view.
     }
     
@@ -57,7 +59,7 @@ class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITe
     }
     
     func updateFile(){
-        
+        databaseCommunicationIndicator.startAnimating()
         guard let latitudeAsDouble = latitudeEntry.text,
             let longitudeAsDouble = longitudeEntry.text
             else {return}
@@ -80,7 +82,7 @@ class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITe
         support.supportLatitude = latitude
         support.supportLongitude = longitude
         SupportController.shared.modifySupport(support: support) {
-    
+            self.databaseCommunicationIndicator.stopAnimating()
     }
     }
    

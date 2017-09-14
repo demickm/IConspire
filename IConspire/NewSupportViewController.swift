@@ -23,6 +23,7 @@ class NewSupportViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var latitudeEntry: UITextField!
     @IBOutlet weak var longitudeEntry: UITextField!
     
+    @IBOutlet weak var databaseCommunicationIndicator: UIActivityIndicatorView!
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
         addPhotoActionSheet()
@@ -30,9 +31,11 @@ class NewSupportViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         SaveButton.isEnabled = false
+        databaseCommunicationIndicator.startAnimating()
         guard let latitudeAsDouble = latitudeEntry.text,
               let longitudeAsDouble = longitudeEntry.text
             else {return}
+        
         
         guard let title = titleEntry.text,
             let subtitle = subtitleEntry.text,
@@ -47,6 +50,7 @@ class NewSupportViewController: UIViewController, UIImagePickerControllerDelegat
         
         if let imageData = UIImageJPEGRepresentation(image, 1.0) {
         SupportController.shared.saveSupport(supportTitle: title, supportSubTitle: subtitle, supportSource: source, supportAuthor: author, supportDate: Date(), supportBody: body, supportLatitude: latitude, supportLongitude: longitude, project: project, supportImageData: imageData) {  (_) in
+            self.databaseCommunicationIndicator.stopAnimating()
             DispatchQueue.main.async {
                 let _ = self.navigationController?.popViewController(animated: true)
             }
@@ -99,7 +103,11 @@ func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 
 func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-    supportImage.image = selectedImage
+    let size = CGSize(width: 1000, height: 800)
+    let resizedImage = ImageHandler.resizeImage(image: selectedImage, targetSize: size )
+    
+    supportImage.image = resizedImage
+        
     addImageButton.setTitle("", for: .normal)
     dismiss(animated: true, completion: nil)
 }
@@ -124,6 +132,7 @@ func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        databaseCommunicationIndicator.stopAnimating()
        
     }
     
