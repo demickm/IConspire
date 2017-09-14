@@ -31,7 +31,7 @@ class NewSupportViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         SaveButton.isEnabled = false
-        databaseCommunicationIndicator.startAnimating()
+        
         guard let latitudeAsDouble = latitudeEntry.text,
               let longitudeAsDouble = longitudeEntry.text
             else {return}
@@ -49,6 +49,7 @@ class NewSupportViewController: UIViewController, UIImagePickerControllerDelegat
             else {return}
         
         if let imageData = UIImageJPEGRepresentation(image, 1.0) {
+        databaseCommunicationIndicator.startAnimating()    
         SupportController.shared.saveSupport(supportTitle: title, supportSubTitle: subtitle, supportSource: source, supportAuthor: author, supportDate: Date(), supportBody: body, supportLatitude: latitude, supportLongitude: longitude, project: project, supportImageData: imageData) {  (_) in
             self.databaseCommunicationIndicator.stopAnimating()
             DispatchQueue.main.async {
@@ -103,7 +104,7 @@ func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 
 func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-    let size = CGSize(width: 1000, height: 800)
+    let size = CGSize(width: 600, height: 400)
     let resizedImage = ImageHandler.resizeImage(image: selectedImage, targetSize: size )
     
     supportImage.image = resizedImage
