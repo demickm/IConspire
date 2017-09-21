@@ -101,6 +101,12 @@
       "idiom" : "ipad",
       "filename" : "iConspire167Icon.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "1024 - iPhone.png",
+      "scale" : "1x"
     }
   ],
   "info" : {

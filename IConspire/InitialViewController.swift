@@ -71,7 +71,7 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         
-        ProjectController.shared.fetchProjects { (_) in
+        ProjectController.shared.fetchProjects { 
             DispatchQueue.main.async {
                 self.myProjects.reloadData()
                 print("fetched")
