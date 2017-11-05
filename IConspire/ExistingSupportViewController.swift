@@ -34,9 +34,12 @@ class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        databaseCommunicationIndicator.isHidden = false
+        databaseCommunicationIndicator.startAnimating()
         updateView()
         supportDate.isEnabled = false
         databaseCommunicationIndicator.stopAnimating()
+        databaseCommunicationIndicator.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -59,6 +62,7 @@ class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITe
     }
     
     func updateFile(){
+        databaseCommunicationIndicator.isHidden = false
         databaseCommunicationIndicator.startAnimating()
         guard let latitudeAsDouble = latitudeEntry.text,
             let longitudeAsDouble = longitudeEntry.text
@@ -83,6 +87,7 @@ class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITe
         support.supportLongitude = longitude
         SupportController.shared.modifySupport(support: support) {
             self.databaseCommunicationIndicator.stopAnimating()
+            self.databaseCommunicationIndicator.isHidden = true
     }
     }
    

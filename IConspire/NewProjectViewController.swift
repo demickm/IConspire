@@ -17,11 +17,12 @@ class NewProjectViewController: UIViewController {
     @IBOutlet weak var databaseCommunicationIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
-        databaseCommunicationIndicator.stopAnimating()
+        super.viewDidLoad()
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
        saveButtonTapped.isEnabled = false
+        databaseCommunicationIndicator.isHidden = false
         databaseCommunicationIndicator.startAnimating()
         guard let projectTitle = projectTitle.text,
             let projectTheory = projectTheory.text else {return}
@@ -30,10 +31,10 @@ class NewProjectViewController: UIViewController {
         guard let project = project else {return}
         print ("saved \(project.projectTitle)")
         DispatchQueue.main.async {
+            self.databaseCommunicationIndicator.stopAnimating()
+            self.databaseCommunicationIndicator.isHidden = true
             let _ = self.navigationController?.popViewController(animated: true)
         }
-        self.databaseCommunicationIndicator.stopAnimating()
-        
         }
     }
  

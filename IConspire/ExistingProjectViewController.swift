@@ -22,20 +22,21 @@ class ExistingProjectViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let project = project else {return}
-        
+        self.databaseCommunicationIndicator.isHidden = false
+        self.databaseCommunicationIndicator.startAnimating()
         SupportController.shared.fetchSupport(project: project) { (_) in
             DispatchQueue.main.async {
                 self.projectSupport.reloadData()
             }
-            self.databaseCommunicationIndicator.stopAnimating()
-            
         }
         updateView()
-
+        self.databaseCommunicationIndicator.stopAnimating()
+        self.databaseCommunicationIndicator.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         projectSupport.reloadData()
+       
     }
     
     
