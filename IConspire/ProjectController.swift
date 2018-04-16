@@ -16,6 +16,11 @@ class ProjectController {
     var publicProjects = [Project]()
     static let shared = ProjectController()
     
+    
+    func fetchPublicProjects(copletion: @escaping() -> Void){
+        
+    }
+    
     func fetchProjects(completion: @escaping() -> Void){
         cloudKitManager.fetchUserProjects { (projects) in
             guard let projects = projects else {return}

@@ -33,24 +33,31 @@ class Support: Equatable {
     var supportAuthor: String
     let supportDate: Date
     var supportBody: String
-    var supportLatitude: Double
-    var supportLongitude: Double
+    var supportLatitude: Double?
+    var supportLongitude: Double?
     var supportID: CKRecordID?
     let projectReference: CKReference
-    var supportImageData: Data
+    var supportImageData: Data?
     
-    fileprivate var temporaryPhotoURL: URL {
+    fileprivate var temporaryPhotoURL: URL? {
         let tempDir = NSTemporaryDirectory()
         let tempURL = URL(fileURLWithPath: tempDir)
+        if let supportImageData = supportImageData {
         let fileURL = tempURL.appendingPathComponent(UUID().uuidString).appendingPathExtension("png")
         try? supportImageData.write(to: fileURL, options: [.atomic])
         return fileURL
+        } else {
+            return nil
+        }
     }
     
-    var supportImage: UIImage {
-        let imageData = supportImageData
+    var supportImage: UIImage? {
+        if let imageData = supportImageData {
         guard let image = UIImage(data: imageData) else { return UIImage() }
         return image
+        } else {
+            return nil
+        }
     }
 
 
@@ -114,7 +121,7 @@ extension CKRecord {
         self.setValue(support.supportLatitude, forKey: Support.supportLatitudeKey)
         self.setValue(support.supportLongitude, forKey: Support.supportLongitudeKey)
         self.setValue(support.projectReference, forKey: Support.projectReferenceKey)
-        let imageAsset = CKAsset(fileURL: support.temporaryPhotoURL)
+        let imageAsset = CKAsset(fileURL: temporaryPhotoURL)
         self.setValue(imageAsset, forKey: Support.supportImageDataKey)
     
     }
