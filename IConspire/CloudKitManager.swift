@@ -318,6 +318,26 @@ class CloudKitManager {
             completion(support)
         })
     }
+    
+    func fetchPublicProjects(completion: @escaping([Project]?) -> Void) {
+        
+        CKContainer.default().fetchUserRecordID { (userID, error) in
+            if let error = error { NSLog(error.localizedDescription) }
+            
+            guard let userID = userID else { return }
+            
+            let reference = CKReference(recordID: userID, action: .none)
+            let predicate = NSPredicate(format: "isPublic == true", reference)
+            let query = CKQuery(recordType: "Project", predicate: predicate)
+            self.publicDatabase.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
+                if let error = error { print(error.localizedDescription) }
+                
+                guard let records = records else { return }
+                let projects:[Project] = records.flatMap { Project(record: $0) }
+                completion(projects)
+            })
+        }
+    }
 
 }
 

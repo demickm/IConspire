@@ -26,6 +26,7 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let alias = alias.text, let user = user else {return}
         submitButton.isEnabled = false
         self.alias.isEnabled = false
+        databaseComunicationIndiicator.isHidden = false
         databaseComunicationIndiicator.startAnimating()
         if hasAlias == false {
             UserController.shared.saveUser(userName: alias) { (user) in
@@ -33,13 +34,13 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.submitButton.isEnabled = true
                 self.alias.isEnabled = true
                 self.databaseComunicationIndiicator.stopAnimating()
+                self.databaseComunicationIndiicator.isHidden = true
                 }
         } else {
             user.userName = alias
             UserController.shared.modifyUser(user: user) { 
                 self.submitButton.isEnabled = true
                 self.alias.isEnabled = true
-                self.databaseComunicationIndiicator.stopAnimating()
             }
         }
     }
@@ -64,6 +65,8 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        notification()
+        databaseComunicationIndiicator.isHidden = false
         databaseComunicationIndiicator.startAnimating()
         cloudKitManager.fetchCurrentUser { (user) in
             DispatchQueue.main.async {
@@ -76,6 +79,7 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.myProjects.reloadData()
                 print("fetched")
                 self.databaseComunicationIndiicator.stopAnimating()
+                self.databaseComunicationIndiicator.isHidden = true
             }
         }
   
@@ -142,5 +146,19 @@ class InitialViewController: UIViewController, UITableViewDelegate, UITableViewD
         return formatter
     }()
     
-}
+    func notification() {
+        
+        let myMessage = "I am working on a large update which will include an improved user interface and will allow people to make their theories public.  I will address the few bugs that I know about.  I would appreciate any input from those of you who have downloaded this app so it can become something you will find useful.  Please email comments to me at demickm@hotmail.com"
+        
+        
+        let addItem = UIAlertController(title: "Notice", message: myMessage, preferredStyle: .alert)
+        
+            let cancelButton = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
+                let _ = self.navigationController?.popViewController(animated: true)
+            }
+        
+            addItem.addAction(cancelButton)
+            self.present(addItem, animated: true, completion: nil)
+        }
+    }
 

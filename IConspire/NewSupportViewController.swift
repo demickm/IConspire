@@ -49,11 +49,13 @@ class NewSupportViewController: UIViewController, UIImagePickerControllerDelegat
             else {return}
         
         if let imageData = UIImageJPEGRepresentation(image, 1.0) {
-        databaseCommunicationIndicator.startAnimating()    
+        databaseCommunicationIndicator.isHidden = false
+        databaseCommunicationIndicator.startAnimating()
         SupportController.shared.saveSupport(supportTitle: title, supportSubTitle: subtitle, supportSource: source, supportAuthor: author, supportDate: Date(), supportBody: body, supportLatitude: latitude, supportLongitude: longitude, project: project, supportImageData: imageData) {  (_) in
-            self.databaseCommunicationIndicator.stopAnimating()
+            
             DispatchQueue.main.async {
-                let _ = self.navigationController?.popViewController(animated: true)
+                self.databaseCommunicationIndicator.stopAnimating()
+                self.databaseCommunicationIndicator.isHidden = true
             }
             }
         
@@ -133,8 +135,7 @@ func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        databaseCommunicationIndicator.stopAnimating()
-       
+ 
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
