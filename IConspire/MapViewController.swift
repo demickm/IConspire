@@ -31,8 +31,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             mapView.showsUserLocation = true
             guard let supportLocations = support else {return}
             for locations in supportLocations {
-                let supportLatitude = locations.supportLatitude
-                let supportLongitude = locations.supportLongitude
+                guard let supportLatitude = locations.supportLatitude,
+                let supportLongitude = locations.supportLongitude else { return }
                 let supportTitle = locations.supportTitle
                 eventLocation = CustomAnnotations(latitude: supportLatitude, longitude: supportLongitude, name: supportTitle)
                 guard let eventLocation = eventLocation else {return}

@@ -276,7 +276,7 @@ class CloudKitManager {
                 if let error = error { print(error.localizedDescription) }
                 
                 guard let records = records else { return }
-                let users = records.flatMap { User(record: $0) }
+                let users = records.compactMap { User(record: $0) }
                 let user = users.first
                 completion(user)
             })
@@ -297,7 +297,7 @@ class CloudKitManager {
                 if let error = error { print(error.localizedDescription) }
                 
                 guard let records = records else { return }
-                let projects:[Project] = records.flatMap { Project(record: $0) }
+                let projects:[Project] = records.compactMap { Project(record: $0) }
                 completion(projects)
             })
         }
@@ -314,7 +314,7 @@ class CloudKitManager {
             if let error = error { print(error.localizedDescription) }
             
             guard let records = records else { return }
-            let support:[Support] = records.flatMap { Support(record: $0) }
+            let support:[Support] = records.compactMap { Support(record: $0) }
             completion(support)
         })
     }
@@ -333,7 +333,7 @@ class CloudKitManager {
                 if let error = error { print(error.localizedDescription) }
                 
                 guard let records = records else { return }
-                let projects:[Project] = records.flatMap { Project(record: $0) }
+                let projects:[Project] = records.compactMap { Project(record: $0) }
                 completion(projects)
             })
         }

@@ -56,8 +56,8 @@ class ExistingSupportViewController: UIViewController, UITextFieldDelegate, UITe
         supportAuthor.text = support.supportAuthor
         supportBody.text = support.supportBody
         supportDate.text = dateFormatter.string(from: support.supportDate)
-        latitudeEntry.text = "\(support.supportLatitude)"
-        longitudeEntry.text = "\(support.supportLongitude)"
+        latitudeEntry.text = "\(support.supportLatitude ?? 0.0)"
+        longitudeEntry.text = "\(support.supportLongitude ?? 0.0)"
         supportImage.image = support.supportImage
     }
     
