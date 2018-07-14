@@ -26,6 +26,7 @@
 		5DAE92001EC241DF003F414B /* NewProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE91FF1EC241DF003F414B /* NewProjectViewController.swift */; };
 		5DAE92021EC24605003F414B /* ProjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAE92011EC24605003F414B /* ProjectController.swift */; };
 		5DB3CCB61F591C4C0099D95A /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3CCB51F591C4C0099D95A /* ImageHandler.swift */; };
+		FDF819E320F9871800972E9F /* String+Conspire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF819E220F9871800972E9F /* String+Conspire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		5DAE91FF1EC241DF003F414B /* NewProjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectViewController.swift; sourceTree = "<group>"; };
 		5DAE92011EC24605003F414B /* ProjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectController.swift; sourceTree = "<group>"; };
 		5DB3CCB51F591C4C0099D95A /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
+		FDF819E220F9871800972E9F /* String+Conspire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Conspire.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		5D7FF9121EC1668700800975 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FDF819E120F9869500972E9F /* Extensions */,
 				5D7FF9131EC1669F00800975 /* CloudKitManager.swift */,
 			);
 			name = Helpers;
@@ -155,6 +158,14 @@
 				5D9DA21D1F0C8CCE00DD885E /* MapViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FDF819E120F9869500972E9F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FDF819E220F9871800972E9F /* String+Conspire.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +255,7 @@
 				5D8F53551EC3A789009CAE52 /* ExistingProjectViewController.swift in Sources */,
 				5DAE92001EC241DF003F414B /* NewProjectViewController.swift in Sources */,
 				5D7FF9171EC166C000800975 /* InitialViewController.swift in Sources */,
+				FDF819E320F9871800972E9F /* String+Conspire.swift in Sources */,
 				5D8F53571EC3A9C7009CAE52 /* NewSupportViewController.swift in Sources */,
 				5D7FF9191EC1675000800975 /* UserController.swift in Sources */,
 				5D7FF90E1EC165A700800975 /* Support.swift in Sources */,
@@ -395,7 +407,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -414,7 +426,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

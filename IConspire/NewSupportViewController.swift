@@ -32,18 +32,13 @@ class NewSupportViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func saveButtonTapped(_ sender: Any) {
         SaveButton.isEnabled = false
         
-        guard let latitudeAsDouble = latitudeEntry.text,
-              let longitudeAsDouble = longitudeEntry.text
-            else {return}
-        
-        
         guard let title = titleEntry.text,
             let subtitle = subtitleEntry.text,
             let source = sourceEntry.text,
             let author = authorEntry.text,
             let body = supportBody.text,
-            let latitude = Double(latitudeAsDouble),
-            let longitude = Double(longitudeAsDouble),
+            let latitude = latitudeEntry.text?.toDouble(),
+            let longitude = longitudeEntry.text?.toDouble(),
             let project = project,
             let image = supportImage.image
             else {return}
